@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasuaLIVE - 新宿社会人バンドサークル</title>
+    <style>
+        /* 基本設定 */
+        :root {
+            --primary-color: #333;
+            --accent-color: #00B900; /* LINE Green */
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+
+        h1.logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #000;
+            text-transform: uppercase;
+        }
+        
+        h1.logo span {
+            color: #4facfe; /* ロゴのアクセントカラー */
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* メインビジュアルエリア */
+        .hero-section {
+            width: 100%;
+            height: 300px;
+            background-color: #333;
+            /* 画像はimagesフォルダの main.jpg を参照 */
+            background-image: url('images/main.jpg');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        /* セクション共通 */
+        section {
+            margin-bottom: 60px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* 見出しエリア（中央揃え設定） */
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            display: inline-block;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* 次回ライブ情報 */
+        .next-live-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .flyer-area {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .flyer-img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 手書き風メモボックス */
+        .info-note {
+            background: #fff;
+            border: 2px solid #333;
+            padding: 15px;
+            margin-top: 20px;
+            position: relative;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+        }
+        
+        /* ピン留め風装飾 */
+        .info-note::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background: red;
+            border-radius: 50%;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .info-note ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .info-note li {
+            margin-bottom: 8px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        /* セットリスト */
+        .setlist-area {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .setlist-area h3 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .setlist-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .setlist-table th, .setlist-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setlist-table th {
+            width: 100px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .setlist-table td {
+            font-weight: bold;
+        }
+
+        /* CasuaLIVEとは */
+        .about-text {
+            text-align: center;
+        }
+
+        /* 今後のスケジュール */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .schedule-table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* お問い合わせ */
+        .contact-area {
+            text-align: center;
+        }
+
+        .line-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 185, 0, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .line-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 768px) {
+            .next-live-container {
+                flex-direction: column;
+            }
+            
+            h1.logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">Casua<span>LIVE</span></h1>
+            <p class="subtitle">東京都新宿を拠点にしている社会人バンドサークル</p>
+        </header>
+
+        <div class="hero-section">
+            </div>
+
+        <section id="next-live">
+            <div class="section-header">
+                <h2>NEXT LIVE</h2>
+            </div>
+            
+            <div class="next-live-container">
+                <div class="flyer-area">
+                    <img src="images/flyer.jpg" alt="次回ライブフライヤー" class="flyer-img">
+                    
+                    <div class="info-note">
+                        <ul>
+                            <li><strong>DATE:</strong> 2025/4/19 (SAT)</li>
+                            <li><strong>SPOT:</strong> 新宿 HEADPOWER</li>
+                            <li><strong>TICKET:</strong> ¥2,000 + 1DRINK</li>
+                            <li><strong>TIME:</strong> OPEN 15:00 / START 15:10</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="setlist-area">
+                    <h3>TIMETABLE</h3>
+                    <table class="setlist-table">
+                        <tr>
+                            <th>15:10 - 15:40</th>
+                            <td>アメリカンチョップスクワッド</td>
+                        </tr>
+                        <tr>
+                            <th>16:00 - 16:30</th>
+                            <td>シンキ度会～うひょー～</td>
+                        </tr>
+                        <tr>
+                            <th>16:50 - 17:20</th>
+                            <td>酒足んねえよ（これいらねえよ）</td>
+                        </tr>
+                        <tr>
+                            <th>17:40 - 18:10</th>
+                            <td>ずっと学生気分 (オルタナロック)</td>
+                        </tr>
+                        <tr>
+                            <th>18:30 - 19:00</th>
+                            <td>あいちょん</td>
+                        </tr>
+                        <tr>
+                            <th>19:20 - 19:50</th>
+                            <td>BLACK OKAMATA (Acid Black Cherry)</td>
+                        </tr>
+                        <tr>
+                            <th>20:10 - 20:40</th>
+                            <td>Authentic Monkeys (Arctic Monkeys)</td>
+                        </tr>
+                        <tr>
+                            <th>21:00 - 21:30</th>
+                            <td>シン・BAND-MAID-SUIT</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <h2>ABOUT</h2>
+            </div>
+            <div class="about-text">
+                <p>「CasuaLIVE」とは？<br>
+                東京都新宿を拠点にしている社会人バンドサークルです。</p>
+                <p>2カ月に一回のペースで新宿でLIVEを開催しています。<br>
+                誰でも気軽にステージでライブができるイベントです。</p>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <div class="section-header">
+                <h2>LIVE SCHEDULE</h2>
+            </div>
+            <table class="schedule-table">
+                <tbody>
+                    <tr>
+                        <td>2025/04/19 (土)</td>
+                        <td>会場: 新宿 HEADPOWER</td>
+                    </tr>
+                    <tr>
+                        <td>2025/06/21 (土)</td>
+                        <td>会場: 新宿 HEADPOWER</td>
+                    </tr>
+                    <tr>
+                        <td>2025/08/23 (土)</td>
+                        <td>会場: 新宿 HEADPOWER</td>
+                    </tr>
+                    <tr>
+                        <td>2025/10/18 (土)</td>
+                        <td>会場: 新宿 HEADPOWER</td>
+                    </tr>
+                    <tr>
+                        <td>2025/12/13 (土)</td>
+                        <td>会場: 新宿 HEADPOWER</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <h2>INQUIRY</h2>
+            </div>
+            <div class="contact-area">
+                <p>ライブをやってみたいけど機会が無い、メンバーが集まらないという方には、<br>
+                メンバーの斡旋も行っていますのでお気軽にお問い合わせ下さい。</p>
+                
+                <a href="https://lin.ee/ngzPRBI" class="line-btn">LINEから問い合わせる</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; CasuaLIVE.since 2025</p>
+    </footer>
+
+</body>
+</html>
